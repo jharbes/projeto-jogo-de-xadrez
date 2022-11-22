@@ -4,3 +4,6 @@
 
 <h3>Sistema de Jogo de Xadrez feito em Java</h3>
 <br>
+
+<hr>
+<h2 align="center">*** EM CONSTRUÇÃO!!! ***</h2>
