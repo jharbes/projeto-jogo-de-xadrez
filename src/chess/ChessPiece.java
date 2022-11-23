@@ -3,13 +3,9 @@ package chess;
 import boardgame.Board;
 import boardgame.Piece;
 
-public class ChessPiece extends Piece {
+public abstract class ChessPiece extends Piece {
 	
 	private Color color;
-	
-	public ChessPiece() {
-		super();
-	}
 
 	public ChessPiece(Board board, Color color) {
 		super(board);

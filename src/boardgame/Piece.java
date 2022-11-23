@@ -4,9 +4,6 @@ public abstract class Piece {
 	
 	protected Position position;
 	private Board board;
-	
-	public Piece() {
-	}
 
 	public Piece(Board board) {
 		this.position = null;
