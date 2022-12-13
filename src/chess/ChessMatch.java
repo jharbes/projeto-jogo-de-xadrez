@@ -16,10 +16,10 @@ public class ChessMatch {
 	}
 
 	public ChessPiece[][] getPieces() {
-		ChessPiece[][] mat = new ChessPiece[board.getRows()][board.getColumns()];
-		for (int i = 0; i < board.getRows(); i++) {
-			for (int j = 0; j < board.getColumns(); j++) {
-				mat[i][j] = (ChessPiece) board.piece(i, j);
+		ChessPiece[][] mat = new ChessPiece[this.board.getRows()][this.board.getColumns()];
+		for (int i = 0; i < this.board.getRows(); i++) {
+			for (int j = 0; j < this.board.getColumns(); j++) {
+				mat[i][j] = (ChessPiece) this.board.piece(i, j);
 			}
 		}
 		return mat;
@@ -30,19 +30,21 @@ public class ChessMatch {
 		Position target = targetPosition.toPosition();
 		validateSourcePosition(source);
 		Piece capturedPiece = makeMove(source, target);
-		return (ChessPiece)capturedPiece;
+		return (ChessPiece) capturedPiece;
 	}
-	
-	private Piece makeMove(Position source,Position target) {
-		Piece p=board.removePiece(source);
-		Piece capturedPiece=board.removePiece(target);
-		board.placePiece(p, target);
+
+	private Piece makeMove(Position source, Position target) {
+		Piece p = this.board.removePiece(source);
+		Piece capturedPiece = this.board.removePiece(target);
+		this.board.placePiece(p, target);
 		return capturedPiece;
 	}
-	
+
 	private void validateSourcePosition(Position position) {
-		if(!board.thereIsAPiece(position))	
+		if (!this.board.thereIsAPiece(position))
 			throw new ChessException("Nao existe peca na posicao de origem");
+		if (!this.board.piece(position).isThereAnyPossibleMove())
+			throw new ChessException("Nao existem movimentos possiveis para a peca escolhida.");
 	}
 
 	private void placeNewPiece(char column, int row, ChessPiece piece) {
