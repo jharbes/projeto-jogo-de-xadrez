@@ -4,7 +4,7 @@ import boardgame.Board;
 import boardgame.Piece;
 
 public abstract class ChessPiece extends Piece {
-	
+
 	private Color color;
 
 	public ChessPiece(Board board, Color color) {
@@ -18,7 +18,7 @@ public abstract class ChessPiece extends Piece {
 
 	@Override
 	public String toString() {
-		return super.toString()+"ChessPiece [color=" + color + "]";
+		return super.toString() + "ChessPiece [color=" + color + "]";
 	}
-	
+
 }
