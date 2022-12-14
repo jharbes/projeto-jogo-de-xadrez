@@ -1,5 +1,8 @@
 package chess;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import boardgame.Board;
 import boardgame.Piece;
 import boardgame.Position;
@@ -11,6 +14,11 @@ public class ChessMatch {
 	private int turn;
 	private Color currentPlayer;
 	private Board board;
+
+	private List<Piece> piecesOnTheBoard = new ArrayList<>();
+	private List<Piece> capturedPieces = new ArrayList<>(); // a instanciacao neste local junto aos atributos
+															// possuem o mesmo efeito do que quando feito dentro
+															// do contrutor
 
 	public ChessMatch() {
 		this.board = new Board(8, 8);
@@ -57,13 +65,19 @@ public class ChessMatch {
 		Piece p = this.board.removePiece(source);
 		Piece capturedPiece = this.board.removePiece(target);
 		this.board.placePiece(p, target);
+
+		if (capturedPiece != null) {
+			piecesOnTheBoard.remove(capturedPiece);
+			capturedPieces.add(capturedPiece);
+		}
+
 		return capturedPiece;
 	}
 
 	private void validateSourcePosition(Position position) {
 		if (!this.board.thereIsAPiece(position))
 			throw new ChessException("Nao existe peca na posicao de origem");
-		if (this.currentPlayer!=((ChessPiece)board.piece(position)).getColor())
+		if (this.currentPlayer != ((ChessPiece) board.piece(position)).getColor())
 			throw new ChessException("A peca escolhida nao e' sua.");
 		if (!this.board.piece(position).isThereAnyPossibleMove())
 			throw new ChessException("Nao existem movimentos possiveis para a peca escolhida.");
@@ -82,6 +96,7 @@ public class ChessMatch {
 
 	private void placeNewPiece(char column, int row, ChessPiece piece) {
 		this.board.placePiece(piece, new ChessPosition(column, row).toPosition());
+		piecesOnTheBoard.add(piece);
 	}
 
 	private void InitialSetup() {
