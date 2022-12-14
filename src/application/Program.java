@@ -12,32 +12,30 @@ public class Program {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		Scanner teclado=new Scanner(System.in);
+		Scanner teclado = new Scanner(System.in);
 
 		ChessMatch chessMatch = new ChessMatch();
-		
-		while(true) {
+
+		while (true) {
 			try {
 				UI.clearScreen();
-				UI.printBoard(chessMatch.getPieces());
+				UI.printMatch(chessMatch);
 				System.out.println();
 				System.out.print("Origem: ");
-				ChessPosition source=UI.readChessPosition(teclado);
-				
-				boolean[][] possibleMoves=chessMatch.possibleMoves(source);
+				ChessPosition source = UI.readChessPosition(teclado);
+
+				boolean[][] possibleMoves = chessMatch.possibleMoves(source);
 				UI.clearScreen();
-				UI.printBoard(chessMatch.getPieces(),possibleMoves);
+				UI.printBoard(chessMatch.getPieces(), possibleMoves);
 				System.out.println();
 				System.out.print("Destino: ");
-				ChessPosition target=UI.readChessPosition(teclado);
-				
-				ChessPiece capturedPiece=chessMatch.performChessMove(source, target);
-			}
-			catch (ChessException e) {
+				ChessPosition target = UI.readChessPosition(teclado);
+
+				ChessPiece capturedPiece = chessMatch.performChessMove(source, target);
+			} catch (ChessException e) {
 				System.out.println(e.getMessage());
 				teclado.nextLine();
-			}
-			catch (InputMismatchException e) {
+			} catch (InputMismatchException e) {
 				System.out.println(e.getMessage());
 				teclado.nextLine();
 			}
