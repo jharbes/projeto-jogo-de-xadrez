@@ -22,7 +22,7 @@ public class Program {
 		while (!chessMatch.getCheckMate()) {
 			try {
 				UI.clearScreen();
-				UI.printMatch(chessMatch,captured);
+				UI.printMatch(chessMatch, captured);
 				System.out.println();
 				System.out.print("Origem: ");
 				ChessPosition source = UI.readChessPosition(teclado);
@@ -35,7 +35,7 @@ public class Program {
 				ChessPosition target = UI.readChessPosition(teclado);
 
 				ChessPiece capturedPiece = chessMatch.performChessMove(source, target);
-				
+
 				if (capturedPiece != null)
 					captured.add(capturedPiece);
 			} catch (ChessException e) {

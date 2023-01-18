@@ -35,20 +35,19 @@ public class Pawn extends ChessPiece {
 				mat[p.getRow()][p.getColumn()] = true;
 
 			}
-			
+
 			p.setValues(position.getRow() - 1, position.getColumn() - 1);
 			if (this.getBoard().positionExists(p) && isThereOpponentPiece(p)) {
 				mat[p.getRow()][p.getColumn()] = true;
 
 			}
-			
+
 			p.setValues(position.getRow() - 1, position.getColumn() + 1);
 			if (this.getBoard().positionExists(p) && isThereOpponentPiece(p)) {
 				mat[p.getRow()][p.getColumn()] = true;
 
 			}
-		}
-		else {
+		} else {
 			p.setValues(position.getRow() + 1, position.getColumn());
 			if (this.getBoard().positionExists(p) && !this.getBoard().thereIsAPiece(p)) {
 				mat[p.getRow()][p.getColumn()] = true;
@@ -62,17 +61,18 @@ public class Pawn extends ChessPiece {
 					&& this.getBoard().positionExists(p2) && !this.getBoard().thereIsAPiece(p2)
 					&& this.getMoveCount() == 0) {
 				// testando o caso de ser a primeira jogada a possibilidade de andar duas casas
+				// para a peca peao
 
 				mat[p.getRow()][p.getColumn()] = true;
 
 			}
-			
+
 			p.setValues(position.getRow() + 1, position.getColumn() - 1);
 			if (this.getBoard().positionExists(p) && isThereOpponentPiece(p)) {
 				mat[p.getRow()][p.getColumn()] = true;
 
 			}
-			
+
 			p.setValues(position.getRow() + 1, position.getColumn() + 1);
 			if (this.getBoard().positionExists(p) && isThereOpponentPiece(p)) {
 				mat[p.getRow()][p.getColumn()] = true;
@@ -82,7 +82,7 @@ public class Pawn extends ChessPiece {
 
 		return mat;
 	}
-	
+
 	@Override
 	public String toString() {
 		return "P";
